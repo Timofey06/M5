@@ -1,0 +1,35 @@
+name: M5 Tests
+
+on:
+  push:
+    branches: [ main, M5 ]
+  pull_request:
+    branches: [ main, M5 ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        python-version: [3.12]
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: ${{ matrix.python-version }}
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+
+    - name: Make package importable
+      run: echo "PYTHONPATH=$PWD/M5:$PYTHONPATH" >> $GITHUB_ENV
+
+    - name: Run pytest
+      run: pytest M5/tests -q
