@@ -12,7 +12,11 @@ def load_params(filename='M5/params.xml'):
     tree = ET.parse(filename)
     root = tree.getroot()
     theta0_deg = float(root.find('initial_angle_deg').text)
+    if theta0_deg < 0 or theta0_deg > 180:
+        raise ValueError("Invalid initial_angle_deg, it must be from 0 to 180")
     k = float(root.find('damping').text)
+    if k < 0 or k > 10:
+        raise ValueError("Invalid damping, it must be from 0 to 10")
     return np.radians(theta0_deg), k
 
 def main():
