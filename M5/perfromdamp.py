@@ -13,6 +13,8 @@ def load_initial_angle(filename='M5/params.xml'):
     tree = ET.parse(filename)
     root = tree.getroot()
     theta0_deg = float(root.find('initial_angle_deg').text)
+    if theta0_deg < 0 or theta0_deg > 180:
+        raise ValueError("Invalid initial_angle_deg, it must be from 0 to 180")
     return np.radians(theta0_deg)
 
 def theoretical_damped_period(k):
