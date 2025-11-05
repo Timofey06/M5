@@ -29,7 +29,7 @@ jobs:
         pip install -r requirements.txt
 
     - name: Make package importable
-      run: echo "PYTHONPATH=$PWD" >> $GITHUB_ENV
+      run: echo "PYTHONPATH=$PWD/M5:$PYTHONPATH" >> $GITHUB_ENV
 
     - name: Run pytest
       run: pytest M5/tests -q
