@@ -1,7 +1,7 @@
 import numpy as np
 import pytest
 
-from calclib import (
+from M5.calclib import (
     angular_acceleration,
     simulate_free_oscillations,
     total_energy,
@@ -10,8 +10,8 @@ from calclib import (
     I,
     omega0_anal
 )
-from perfromdamp import theoretical_damped_period
-from perfromampl import theoretical_period
+from M5.perfromdamp import theoretical_damped_period
+from M5.perfromampl import theoretical_period
 
 
 # Проверяем, что функция не придумывает движение там, где его нет
