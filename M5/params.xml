@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<parameters>
+    <initial_angle_deg>15</initial_angle_deg>
+    <damping>0.15</damping>
+</parameters>

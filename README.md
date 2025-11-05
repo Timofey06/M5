@@ -21,14 +21,14 @@ python -m venv venv
 **Linux/macOS:**
 
 ```bash
-python3 -m venv venv
-source venv/bin/activate
+uv venv
+source .venv/bin/activate  # macOS/Linux
 ```
 
 ### Шаг 3. Установить зависимости
 
 ```bash
-pip install -r requirements.txt
+uv pip install -r requirements.txt
 ```
 
 ### Шаг 4. Настроить параметры моделирования
@@ -54,6 +54,10 @@ pip install -r requirements.txt
 * `perfromdamp` - график зависимости периода от трения
 * `perfromampl` - график зависимости периода от амплитуды
 
+### Шаг 6. Запустить тесты
+```bash
+PYTHONPATH=$PWD/M5 uv run pytest -v M5/tests
+```
 # 2. Ограничения входных данных
 
 * `initial_angle_deg` jт 0 до 180 градусов
